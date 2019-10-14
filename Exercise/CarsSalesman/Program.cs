@@ -6,7 +6,7 @@
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             List<Car> cars = new List<Car>();
             List<Engine> engines = new List<Engine>();
