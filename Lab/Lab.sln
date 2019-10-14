@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhombusOfStars", "RhombusOfStars\RhombusOfStars.csproj", "{AD0F78D9-E7ED-41B9-AA15-C9B50867C587}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PointInRectangle", "PointInRectangle\PointInRectangle.csproj", "{FB91DB76-9DEF-4C39-AFE5-E4AC27664A45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PointInRectangle", "PointInRectangle\PointInRectangle.csproj", "{FB91DB76-9DEF-4C39-AFE5-E4AC27664A45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation", "HotelReservation\HotelReservation.csproj", "{EFDF2930-942D-4832-9247-B2EE7384CFBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{FB91DB76-9DEF-4C39-AFE5-E4AC27664A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB91DB76-9DEF-4C39-AFE5-E4AC27664A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB91DB76-9DEF-4C39-AFE5-E4AC27664A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFDF2930-942D-4832-9247-B2EE7384CFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFDF2930-942D-4832-9247-B2EE7384CFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFDF2930-942D-4832-9247-B2EE7384CFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFDF2930-942D-4832-9247-B2EE7384CFBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
