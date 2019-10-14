@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace P03_JediGalaxy
+namespace JediGalaxy
 {
     class Program
     {
