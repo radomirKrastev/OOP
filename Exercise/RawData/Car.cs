@@ -4,11 +4,6 @@
 
     public class Car
     {
-        public string Model;
-        public Engine Engine;
-        public Cargo Cargo;
-        public TireSet TireSet;
-
         public Car(string model, Engine engine, Cargo cargo, TireSet tires)
         {
             this.Model = model;
@@ -16,5 +11,10 @@
             this.Cargo = cargo;
             this.TireSet = tires;
         }
+
+        public string Model;
+        public Engine Engine;
+        public Cargo Cargo;
+        public TireSet TireSet;
     }
 }
