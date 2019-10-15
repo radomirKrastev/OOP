@@ -1,4 +1,4 @@
-﻿namespace Hospital
+﻿namespace Hospital.Departments
 {
     using System.Collections.Generic;
 
