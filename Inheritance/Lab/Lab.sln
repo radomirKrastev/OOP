@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Farm", "Farm\Farm.csproj", "{D8348095-F49C-4B0B-AB3D-7439B813CB0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomRandomList", "CustomRandomList\CustomRandomList.csproj", "{F3FE304D-EFD7-497A-B0EE-917815C35A7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D8348095-F49C-4B0B-AB3D-7439B813CB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8348095-F49C-4B0B-AB3D-7439B813CB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8348095-F49C-4B0B-AB3D-7439B813CB0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3FE304D-EFD7-497A-B0EE-917815C35A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3FE304D-EFD7-497A-B0EE-917815C35A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3FE304D-EFD7-497A-B0EE-917815C35A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3FE304D-EFD7-497A-B0EE-917815C35A7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
