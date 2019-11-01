@@ -1,5 +1,7 @@
 ﻿namespace BorderControl
 {
+    using System;
+
     public abstract class Passer
     {
         public abstract string Id { get; }
