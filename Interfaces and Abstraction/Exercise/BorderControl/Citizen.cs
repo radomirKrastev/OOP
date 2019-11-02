@@ -2,12 +2,13 @@
 {
     using System;
 
-    public class Citizen : Passer, IBirthable
+    public class Citizen : Passer, IBirthable, IBuyer
     {
         private string name;
         private int age;
         private string id;
         private DateTime birthDate;
+        private int food;
 
         public Citizen(string name, int age, string id)
         {
@@ -25,5 +26,14 @@
         public override string Id => this.id;
 
         public DateTime BirthDate => this.birthDate;
+
+        public int Food => this.food;
+
+        public string Name => this.name;
+
+        public void BuyFood()
+        {
+            this.food += 10;
+        }
     }
 }

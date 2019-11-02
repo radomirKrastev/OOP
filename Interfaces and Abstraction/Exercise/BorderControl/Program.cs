@@ -9,45 +9,55 @@
     {
         public static void Main()
         {
-            var bornCreatures = new List<IBirthable>();
+            var foodBuyersCount = int.Parse(Console.ReadLine());
 
-            var inputLine = Console.ReadLine();
+            var foodBuyers = new List<IBuyer>();
+            CreateFoodBuyers(foodBuyersCount, foodBuyers);
 
-            while (inputLine != "End")
+            BuyFood(foodBuyers);
+
+            var totalFoodBought = foodBuyers.Select(x => x.Food).Sum();
+            Console.WriteLine(totalFoodBought);
+        }
+
+        private static void CreateFoodBuyers(int foodBuyersCount, List<IBuyer> foodBuyers)
+        {
+            for (int i = 0; i < foodBuyersCount; i++)
             {
-                var dataParts = inputLine.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                var dataParts = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
-                if (dataParts[0] == "Citizen")
+                var name = dataParts[0];
+                var age = int.Parse(dataParts[1]);
+
+                if (dataParts.Length == 3)
                 {
-                    var name = dataParts[1];
-                    var age = int.Parse(dataParts[2]);
-                    var id = dataParts[3];
+                    var group = dataParts[2];
 
-                    var birthdate = DateTime
-                        .ParseExact(dataParts[4], "dd'/'MM'/'yyyy", CultureInfo.InvariantCulture);
-                    
-                    bornCreatures.Add(new Citizen(name, age, id, birthdate));
+                    foodBuyers.Add(new Rebel(name, age, group));
                 }
-                else if (dataParts[0] == "Pet")
+                else if (dataParts.Length == 4)
                 {
-                    var name = dataParts[1];
-
+                    var id = dataParts[2];
                     var birthdate = DateTime
-                        .ParseExact(dataParts[2], "dd'/'MM'/'yyyy", CultureInfo.InvariantCulture);
+                        .ParseExact(dataParts[3], "dd'/'MM'/'yyyy", CultureInfo.InvariantCulture);
 
-                    bornCreatures.Add(new Pet(name, birthdate));
+                    foodBuyers.Add(new Citizen(name, age, id, birthdate));
                 }
-
-                inputLine = Console.ReadLine();
             }
+        }
 
-            var birthYear = int.Parse(Console.ReadLine());
+        private static void BuyFood(List<IBuyer> foodBuyers)
+        {
+            var name = Console.ReadLine();
 
-            bornCreatures
-                .Where(x => x.BirthDate.Year == birthYear)
-                .Select(x => x.BirthDate)
-                .ToList()
-                .ForEach(x => Console.WriteLine($"{x.ToString("dd'/'MM'/'yyyy")}"));
+            while (name != "End")
+            {
+                var foodBuyer = foodBuyers.Where(x => x.Name == name).FirstOrDefault();
+
+                foodBuyer?.BuyFood();
+
+                name = Console.ReadLine();
+            }
         }
     }
 }
