@@ -2,7 +2,7 @@
 {
     public class RaceMotorcycle : Motorcycle
     {
-        public const double DefaultFuelConsumption = 8;
+        private const double DefaultFuelConsumption = 8;
 
         public RaceMotorcycle(int horsePower, double fuel) : base(horsePower, fuel)
         {
