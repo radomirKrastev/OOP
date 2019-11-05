@@ -8,18 +8,12 @@ namespace Animals.Animals
         private string name;
         private string gender;
 
-        public Animal(string name, int age, ISoundProducable soundProducer)
-        {
-            this.Name = name;
-            this.Age = age;
-            this.SoundProducer = soundProducer;
-        }
-
         public Animal(string name, int age, string gender, ISoundProducable soundProducer)
         {
-            this.Name = name;
-            this.Age = age;
-            this.Gender = gender;
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.gender = gender;
             this.SoundProducer = soundProducer;
         }
 
@@ -28,7 +22,7 @@ namespace Animals.Animals
             get => this.name;
             protected set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Invalid input!");
                 }
@@ -42,7 +36,7 @@ namespace Animals.Animals
             get => this.age;
             protected set
             {
-                if (string.IsNullOrWhiteSpace(value.ToString()) || value < 0)
+                if (string.IsNullOrEmpty(value.ToString()) || value < 0)
                 {
                     throw new ArgumentException("Invalid input!");
                 }
@@ -56,7 +50,7 @@ namespace Animals.Animals
             get => this.gender;
             protected set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrEmpty(value) || (value.ToLower() != "male" && value.ToLower() != "female"))
                 {
                     throw new ArgumentException("Invalid input!");
                 }

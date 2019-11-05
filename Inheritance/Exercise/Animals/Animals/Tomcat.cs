@@ -2,10 +2,9 @@
 {
     public class Tomcat : Cat
     {
-        public Tomcat(string name, int age, ISoundProducable soundProducer)
-            : base(name, age, soundProducer)
+        public Tomcat(string name, int age, string gender, ISoundProducable soundProducer)
+            : base(name, age, gender, soundProducer)
         {
-            base.Gender = "Male";
             this.Sound = "MEOW";
         }
 

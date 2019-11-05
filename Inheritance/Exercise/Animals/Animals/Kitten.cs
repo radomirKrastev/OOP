@@ -2,11 +2,10 @@
 {
     public class Kitten : Cat
     {
-        public Kitten(string name, int age, ISoundProducable soundProducer)
-            : base(name, age, soundProducer)
+        public Kitten(string name, int age, string gender, ISoundProducable soundProducer)
+            : base(name, age, gender, soundProducer)
         {
-            base.Gender = "Female";
-            this.Sound = "Meow";
+            this.Sound = "Meow meow";
         }
 
         public override void ProduceSound()

@@ -1,82 +1,70 @@
 ﻿namespace Animals
 {
     using System;
+    using System.Collections.Generic;
     using Animals;
 
     public class StartUp
     {
         public static void Main()
         {
-            var animal = Console.ReadLine();
-            var soundProducer = new SoundProducer();           
+            var soundProducer = new SoundProducer();
+            var animals = new List<Animal>();
 
-            while (animal != "Beast!")
+            var animalData = Console.ReadLine();
+
+            while (animalData != "Beast!")
             {
-                var animalData = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-                var name = animalData[0];
-                int age;
-
                 try
                 {
-                    if (!int.TryParse(animalData[1], out age))
+                    var dataParts = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                    var name = dataParts[0];
+                    var age = int.Parse(dataParts[1]);
+
+                    var gender = string.Empty;
+
+                    if (dataParts.Length == 3)
                     {
-                        throw new ArgumentException("Invalid input!");
+                        gender = dataParts[2];
+                    }
+
+                    if (animalData.ToLower() == "cat")
+                    {
+                        animals.Add(new Cat(name, age, gender, soundProducer));
+                    }
+                    else if (animalData.ToLower() == "dog")
+                    {
+                        animals.Add(new Dog(name, age, gender, soundProducer));
+                    }
+                    else if (animalData.ToLower() == "frog")
+                    {
+                        animals.Add(new Frog(name, age, gender, soundProducer));
+                    }
+                    else if (animalData.ToLower() == "kitten")
+                    {
+                        gender = "Female";
+                        animals.Add(new Kitten(name, age, gender, soundProducer));
+                    }
+                    else if (animalData.ToLower() == "tomcat")
+                    {
+                        gender = "Male";
+                        animals.Add(new Tomcat(name, age, gender, soundProducer));
                     }
                 }
-                catch(ArgumentException exception)
-                {
-                    Console.WriteLine(exception.Message);
-                    animal = Console.ReadLine();
-                    continue;
-                }                
-
-                var gender = string.Empty;
-
-                if (animalData.Length == 3)
-                {
-                    gender = animalData[2];
-                }
-
-                try
-                {
-                    if (animal.ToLower() == "cat")
-                    {
-                        var cat = new Cat(name, age, gender, soundProducer);
-                        Console.WriteLine(cat);
-                        cat.ProduceSound();
-                    }
-                    else if (animal.ToLower() == "dog")
-                    {
-                        var dog = new Dog(name, age, gender, soundProducer);
-                        Console.WriteLine(dog);
-                        dog.ProduceSound();
-                    }
-                    else if (animal.ToLower() == "frog")
-                    {
-                        var frog = new Frog(name, age, gender, soundProducer);
-                        Console.WriteLine(frog);
-                        frog.ProduceSound();
-                    }
-                    else if (animal.ToLower() == "kitten")
-                    {
-                        var kitten = new Kitten(name, age, soundProducer);
-                        Console.WriteLine(kitten);
-                        kitten.ProduceSound();
-                    }
-                    else if (animal.ToLower() == "tomcat")
-                    {
-                        var tomcat = new Tomcat(name, age, soundProducer);
-                        Console.WriteLine(tomcat);
-                        tomcat.ProduceSound();
-                    }
-                }
-                catch(ArgumentException exception)
+                catch(Exception exception)
                 {
                     Console.WriteLine(exception.Message);
                 }
 
-                animal = Console.ReadLine();
+                animalData = Console.ReadLine();
+            }
+
+            foreach (var animal in animals)
+            {
+                Console.WriteLine(animal.ToString());
+                animal.ProduceSound();
             }
         }
+
     }
 }
