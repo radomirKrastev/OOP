@@ -1,29 +1,21 @@
 ﻿namespace Vehicles
 {
+    using System;
+
     public class Truck : Vehicle
     {
         private const double AdditionalConsumption = 1.6;
 
-        public Truck(double fuelQuantity, double fuelConsumption) : base(fuelQuantity, fuelConsumption)
+        public Truck(double fuelQuantity, double fuelConsumption, double tankCapacity) 
+            : base(fuelQuantity, fuelConsumption + AdditionalConsumption, tankCapacity)
         {
         }
 
         public override void Refuel(double additionalFuel)
         {
-            base.Refuel(additionalFuel*0.95);
-        }
+            base.Refuel(additionalFuel);
 
-        public override string Drive(double distance)
-        {
-            var distancePossible = (this.FuelConsumption + AdditionalConsumption) * distance <= this.FuelQuantity;
-
-            if (distancePossible)
-            {
-                this.FuelQuantity -= (this.FuelConsumption + AdditionalConsumption) * distance;
-                return $"{GetType().Name} travelled {distance} km";
-            }
-
-            return $"{GetType().Name} needs refueling";
+            this.FuelQuantity += (additionalFuel * 0.95)-additionalFuel;
         }
     }
 }
