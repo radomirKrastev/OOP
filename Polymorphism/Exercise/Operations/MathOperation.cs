@@ -1,6 +1,6 @@
 ﻿namespace Operations
 {
-    public class MathOperations
+    public class MathOperation
     {
         public int Add(int a, int b)
         {
