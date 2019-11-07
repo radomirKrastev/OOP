@@ -1,7 +1,5 @@
 ﻿namespace Vehicles
 {
-    using System;
-
     public class Truck : Vehicle
     {
         private const double AdditionalConsumption = 1.6;
@@ -15,7 +13,7 @@
         {
             base.Refuel(additionalFuel);
 
-            this.FuelQuantity += (additionalFuel * 0.95)-additionalFuel;
+            this.FuelQuantity += (additionalFuel * 0.95) - additionalFuel;
         }
     }
 }

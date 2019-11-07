@@ -5,7 +5,6 @@
     public class Vehicle
     {
         private double fuelQuantity;
-        private double fuelConsumption;
 
         public Vehicle(double fuelQuantity, double fuelConsumption, double tankCapacity)
         {
