@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace P03.DetailPrinter
+﻿namespace P03.DetailPrinter
 {
     public class Employee
     {
@@ -12,5 +8,10 @@ namespace P03.DetailPrinter
         }
 
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }
