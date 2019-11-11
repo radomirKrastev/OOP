@@ -6,15 +6,15 @@
     {
         public static void Main()
         {
-            var musicFile = new Music("Gosho ot Pochivka", "Sinagogata", 12, 4096);
-            var streamProgressInfoMusicTest = new StreamProgressInfo(musicFile);
+            //var musicFile = new Music("Gosho ot Pochivka", "Sinagogata", 12, 4096);
+            //var streamProgressInfoMusicTest = new StreamProgressInfo(musicFile);
 
-            Console.WriteLine(streamProgressInfoMusicTest.CalculateCurrentPercent());
+            //Console.WriteLine(streamProgressInfoMusicTest.CalculateCurrentPercent());
 
-            var justFile = new File("File", 500, 21293);
-            var streamProgressInfoFileTest = new StreamProgressInfo(justFile);
+            //var justFile = new File("File", 500, 21293);
+            //var streamProgressInfoFileTest = new StreamProgressInfo(justFile);
 
-            Console.WriteLine(streamProgressInfoFileTest.CalculateCurrentPercent());
+            //Console.WriteLine(streamProgressInfoFileTest.CalculateCurrentPercent());
         }
     }
 }
