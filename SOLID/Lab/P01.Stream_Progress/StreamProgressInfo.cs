@@ -4,7 +4,6 @@
     {
         private IFileType fileType;
 
-        // If we want to stream a music file, we can't
         public StreamProgressInfo(IFileType file)
         {
             this.fileType = file;
