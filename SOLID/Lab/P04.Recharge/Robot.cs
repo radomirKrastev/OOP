@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace P04.Recharge
+﻿namespace P04.Recharge
 {
     public class Robot : Worker, IRechargeable
     {
@@ -14,10 +10,7 @@ namespace P04.Recharge
             this.capacity = capacity;
         }
 
-        public int Capacity
-        {
-            get { return this.capacity; }
-        }
+        public int Capacity => this.capacity;
 
         public int CurrentPower
         {
@@ -25,25 +18,20 @@ namespace P04.Recharge
             set { this.currentPower = value; }
         }
 
-        public void Work(int hours)
+        public override void Work(int hours)
         {
             if (hours > this.currentPower)
             {
-                hours = currentPower;
+                hours = this.currentPower;
             }
 
             base.Work(hours);
             this.currentPower -= hours;
         }
 
-        public override void Recharge()
+        public void Recharge()
         {
             this.currentPower = this.capacity;
-        }
-
-        public override void Sleep()
-        {
-            throw new InvalidOperationException("Robots cannot sleep");
         }
     }
 }
