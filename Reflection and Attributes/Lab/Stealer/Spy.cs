@@ -15,7 +15,7 @@ public class Spy
             | BindingFlags.Instance
             | BindingFlags.Static);
 
-        var output = new StringBuilder();
+        StringBuilder output = new StringBuilder();
 
         object classInstance = Activator.CreateInstance(classType, new object[] { });
 
@@ -52,17 +52,37 @@ public class Spy
 
         var result = new StringBuilder();
 
-        foreach (var field in classFields)
+        foreach (FieldInfo field in classFields)
         {
             result.AppendLine($"{field.Name} must be private!");
         }
-        foreach (var nonPublicProperty in classNonPublicMethods.Where(p=>p.Name.StartsWith("get")))
+        foreach (MethodInfo nonPublicProperty in classNonPublicMethods.Where(p=>p.Name.StartsWith("get")))
         {
             result.AppendLine($"{nonPublicProperty.Name} have to be public!");
         }
-        foreach (var publicProperty in classPublicMethods.Where(p=>p.Name.StartsWith("set")))
+        foreach (MethodInfo publicProperty in classPublicMethods.Where(p=>p.Name.StartsWith("set")))
         {
             result.AppendLine($"{publicProperty.Name} have to be private!");
+        }
+
+        return result.ToString().TrimEnd();
+    }
+
+    public string RevealPrivateMethods(string className)
+    {
+        Type classType = Type.GetType(className);
+
+        string baseClassName =  classType.BaseType.Name;
+
+        StringBuilder result = new StringBuilder();
+        result.AppendLine($"All Private Methods of Class: {className}");
+        result.AppendLine($"Base Class: {baseClassName}");
+
+        MethodInfo[] classNonPublicMethods = classType.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
+
+        foreach (MethodInfo classMethod in classNonPublicMethods)
+        {
+            result.AppendLine(classMethod.Name);
         }
 
         return result.ToString().TrimEnd();
