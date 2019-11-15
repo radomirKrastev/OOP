@@ -33,7 +33,7 @@ public class Spy
     {
         Type classType = Type.GetType(className);
 
-        FieldInfo [] classFields = classType.GetFields(
+        FieldInfo[] classFields = classType.GetFields(
             BindingFlags.Static 
             | BindingFlags.Instance 
             | BindingFlags.Public);
@@ -56,11 +56,13 @@ public class Spy
         {
             result.AppendLine($"{field.Name} must be private!");
         }
-        foreach (MethodInfo nonPublicProperty in classNonPublicMethods.Where(p=>p.Name.StartsWith("get")))
+
+        foreach (MethodInfo nonPublicProperty in classNonPublicMethods.Where(p => p.Name.StartsWith("get")))
         {
             result.AppendLine($"{nonPublicProperty.Name} have to be public!");
         }
-        foreach (MethodInfo publicProperty in classPublicMethods.Where(p=>p.Name.StartsWith("set")))
+
+        foreach (MethodInfo publicProperty in classPublicMethods.Where(p => p.Name.StartsWith("set")))
         {
             result.AppendLine($"{publicProperty.Name} have to be private!");
         }
@@ -72,7 +74,7 @@ public class Spy
     {
         Type classType = Type.GetType(className);
 
-        string baseClassName =  classType.BaseType.Name;
+        string baseClassName = classType.BaseType.Name;
 
         StringBuilder result = new StringBuilder();
         result.AppendLine($"All Private Methods of Class: {className}");
@@ -87,5 +89,25 @@ public class Spy
 
         return result.ToString().TrimEnd();
     }
-}
 
+    public string CollectGettersAndSetters(string className)
+    {
+        Type classType = Type.GetType(className);
+
+        MethodInfo[] classMethods = classType.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+        StringBuilder result = new StringBuilder();
+
+        foreach (var method in classMethods.Where(m => m.Name.StartsWith("get")))
+        {
+            result.AppendLine($"{method.Name} will return {method.ReturnType}");
+        }
+
+        foreach (var method in classMethods.Where(m => m.Name.StartsWith("set")))
+        {
+            result.AppendLine($"{method.Name} will set field of {method.GetParameters().First().ParameterType}");
+        }
+
+        return result.ToString().TrimEnd();
+    }
+}
