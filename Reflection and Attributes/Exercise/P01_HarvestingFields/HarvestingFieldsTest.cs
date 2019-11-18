@@ -20,7 +20,7 @@
                 switch (command)
                 {
                     case "private":
-                        PrintFields(allFields.Where(x=>x.IsPrivate).ToArray());
+                        PrintFields(allFields.Where(x => x.IsPrivate).ToArray());
                         break;
                     case "public":
                         PrintFields(allFields.Where(x => x.IsPublic).ToArray());
