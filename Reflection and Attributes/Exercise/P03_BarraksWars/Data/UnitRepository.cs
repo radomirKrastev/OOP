@@ -4,6 +4,7 @@
     using Contracts;
     using System.Collections.Generic;
     using System.Text;
+    using System.Linq;
 
     class UnitRepository : IRepository
     {
@@ -43,8 +44,13 @@
 
         public void RemoveUnit(string unitType)
         {
-            //TODO: implement for Problem 4
-            throw new NotImplementedException();
+            if(this.amountOfUnits.Any(x => x.Key == unitType && x.Value > 0))
+            {
+                this.amountOfUnits[unitType]--;
+                return;
+            }
+
+            throw new ArgumentException($"No such units in repository.");
         }
     }
 }

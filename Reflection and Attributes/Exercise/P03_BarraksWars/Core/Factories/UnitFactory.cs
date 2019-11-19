@@ -1,15 +1,17 @@
 ﻿namespace _03BarracksFactory.Core.Factories
 {
     using System;
+    using System.Linq;
+    using System.Reflection;
     using Contracts;
 
     public class UnitFactory : IUnitFactory
     {
         public IUnit CreateUnit(string unitType)
         {
-            var unitClassPath = $"{typeof(AppEntryPoint).Namespace}.Models.Units.";
+            Assembly assembly = typeof(AppEntryPoint).Assembly;
 
-            Type classType = Type.GetType(unitClassPath + unitType);
+            Type classType = assembly.GetTypes().First(x => x.Name == unitType);
 
             IUnit unit = (IUnit)Activator.CreateInstance(classType);
 
