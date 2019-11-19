@@ -1,7 +1,6 @@
 ﻿namespace P03_BarraksWars.Core.InputCommands
 {
     using _03BarracksFactory.Contracts;
-
     public class AddCommand : Command
     {
         public AddCommand(string[] data, IRepository repository, IUnitFactory unitFactory) 

@@ -2,7 +2,6 @@
 {
     using _03BarracksFactory.Contracts;
 
-
     public class ReportCommand : Command
     {
         public ReportCommand(string[] data, IRepository repository, IUnitFactory unitFactory) 
