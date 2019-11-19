@@ -1,12 +1,16 @@
-﻿using System;
-using _03BarracksFactory.Contracts;
-
-namespace P03_BarraksWars.Core.InputCommands
+﻿namespace P03_BarraksWars.Core.InputCommands
 {
+    using System;
+    using _03BarracksFactory.Contracts;
+    using P03_BarraksWars.Attributes;
+    
     public class RetireCommand : Command
     {
-        public RetireCommand(string[] data, IRepository repository, IUnitFactory unitFactory) 
-            : base(data, repository, unitFactory)
+        [Inject]
+        private IRepository repository;
+
+        public RetireCommand(string[] data) 
+            : base(data)
         {
         }
 
@@ -16,10 +20,10 @@ namespace P03_BarraksWars.Core.InputCommands
 
             try
             {
-                this.Repository.RemoveUnit(unit);
+                this.repository.RemoveUnit(unit);
                 return $"{unit} retired!";
             }
-            catch(ArgumentException ae)
+            catch (ArgumentException ae)
             {
                 return ae.Message;
             }

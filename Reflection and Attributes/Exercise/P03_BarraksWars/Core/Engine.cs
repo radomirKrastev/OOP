@@ -5,7 +5,7 @@
     using Contracts;
     using P03_BarraksWars.Core.InputCommands;
 
-    class Engine : IRunnable
+    public class Engine : IRunnable
     {
         private ICommandInterpreter commandInterpreter;
 

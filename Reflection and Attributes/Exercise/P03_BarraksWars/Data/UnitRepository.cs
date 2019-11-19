@@ -1,12 +1,12 @@
 ﻿namespace _03BarracksFactory.Data
 {
     using System;
-    using Contracts;
     using System.Collections.Generic;
-    using System.Text;
     using System.Linq;
+    using System.Text;
+    using Contracts;   
 
-    class UnitRepository : IRepository
+    public class UnitRepository : IRepository
     {
         private IDictionary<string, int> amountOfUnits;
 
@@ -20,7 +20,7 @@
             get
             {
                 StringBuilder statBuilder = new StringBuilder();
-                foreach (var entry in amountOfUnits)
+                foreach (var entry in this.amountOfUnits)
                 {
                     string formatedEntry =
                             string.Format("{0} -> {1}", entry.Key, entry.Value);
@@ -44,7 +44,7 @@
 
         public void RemoveUnit(string unitType)
         {
-            if(this.amountOfUnits.Any(x => x.Key == unitType && x.Value > 0))
+            if (this.amountOfUnits.Any(x => x.Key == unitType && x.Value > 0))
             {
                 this.amountOfUnits[unitType]--;
                 return;
