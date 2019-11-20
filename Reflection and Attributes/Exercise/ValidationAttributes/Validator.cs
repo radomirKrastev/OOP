@@ -14,7 +14,7 @@
 
             foreach (PropertyInfo property in properties)
             {
-                MyValidationAttribute [] attributes = property
+                MyValidationAttribute[] attributes = property
                     .GetCustomAttributes()
                     .Where(a => a is MyValidationAttribute)
                     .Cast<MyValidationAttribute>()

@@ -16,7 +16,7 @@
         [MyRequired]
         public string FullName { get; private set; }
 
-        [MyRange(MinAge,MaxAge)]
+        [MyRange(MinAge, MaxAge)]
         public int Age { get; private set; }
     }
 }

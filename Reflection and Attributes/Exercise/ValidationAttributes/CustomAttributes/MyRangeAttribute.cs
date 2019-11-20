@@ -17,7 +17,7 @@
         {
             int value = Convert.ToInt32(obj);
 
-            if(value < minValue || value > maxValue)
+            if (value < this.minValue || value > this.maxValue)
             {
                 return false;
             }
