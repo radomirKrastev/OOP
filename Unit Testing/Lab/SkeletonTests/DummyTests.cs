@@ -1,8 +1,8 @@
 ﻿namespace SkeletonTests
 {
-    using NUnit.Framework;
     using System;
-
+    using NUnit.Framework;
+    
     [TestFixture]
     public class DummyTests
     {
@@ -14,7 +14,7 @@
 
             axe.Attack(dummy);
 
-            Assert.AreEqual(8, dummy.Health);
+            Assert.AreEqual(8, dummy.Health, "Dummy does not loose health when attacked.");
         }
 
         [Test]
