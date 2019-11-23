@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace CarManager
+﻿namespace CarManager
 {
+    using System;    
+
     public class Car
     {
         private string make;
@@ -13,12 +13,7 @@ namespace CarManager
         private double fuelAmount;
 
         private double fuelCapacity;
-
-        private Car()
-        {
-            this.FuelAmount = 0;
-        }
-
+        
         public Car(string make, string model, double fuelConsumption, double fuelCapacity) : this()
         {
             this.Make = make;
@@ -27,12 +22,18 @@ namespace CarManager
             this.FuelCapacity = fuelCapacity;
         }
 
+        private Car()
+        {
+            this.FuelAmount = 0;
+        }
+
         public string Make
         {
             get
             {
                 return this.make;
             }
+
             private set
             {
                 if (String.IsNullOrEmpty(value))
@@ -50,6 +51,7 @@ namespace CarManager
             {
                 return this.model;
             }
+
             private set
             {
                 if (String.IsNullOrEmpty(value))
@@ -67,6 +69,7 @@ namespace CarManager
             {
                 return this.fuelConsumption;
             }
+
             private set
             {
                 if (value <= 0)
@@ -84,6 +87,7 @@ namespace CarManager
             {
                 return this.fuelAmount;
             }
+
             private set
             {
                 if (value < 0)
@@ -101,6 +105,7 @@ namespace CarManager
             {
                 return this.fuelCapacity;
             }
+
             private set
             {
                 if (value <= 0)
