@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-
-namespace ExtendedDatabase
+﻿namespace ExtendedDatabase
 {
+    using System;
+    using System.Linq;
+
     public class ExtendedDatabase
     {
         private Person[] persons;
@@ -12,28 +12,13 @@ namespace ExtendedDatabase
         public ExtendedDatabase(params Person[] persons)
         {
             this.persons = new Person[16];
-            AddRange(persons);
+            this.AddRange(persons);
         }
 
         public int Count
         {
-            get { return count; }
-        }
-
-        private void AddRange(Person[] data)
-        {
-            if (data.Length > 16)
-            {
-                throw new ArgumentException("Provided data length should be in range [0..16]!");
-            }
-
-            for (int i = 0; i < data.Length; i++)
-            {
-                this.Add(data[i]);
-            }
-
-            this.count = data.Length;
-        }
+            get { return this.count; }
+        }        
 
         public void Add(Person person)
         {
@@ -42,12 +27,12 @@ namespace ExtendedDatabase
                 throw new InvalidOperationException("Array's capacity must be exactly 16 integers!");
             }
 
-            if (persons.Any(p => p?.UserName == person.UserName))
+            if (this.persons.Any(p => p?.UserName == person.UserName))
             {
                 throw new InvalidOperationException("There is already user with this username!");
             }
 
-            if (persons.Any(p => p?.Id == person.Id))
+            if (this.persons.Any(p => p?.Id == person.Id))
             {
                 throw new InvalidOperationException("There is already user with this Id!");
             }
@@ -83,7 +68,6 @@ namespace ExtendedDatabase
             return person;
         }
 
-
         public Person FindById(long id)
         {
             if (id < 0)
@@ -98,6 +82,21 @@ namespace ExtendedDatabase
 
             Person person = this.persons.First(p => p.Id == id);
             return person;
+        }
+
+        private void AddRange(Person[] data)
+        {
+            if (data.Length > 16)
+            {
+                throw new ArgumentException("Provided data length should be in range [0..16]!");
+            }
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                this.Add(data[i]);
+            }
+
+            this.count = data.Length;
         }
     }
 }

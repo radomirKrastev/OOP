@@ -9,11 +9,6 @@ namespace Database.Tests
     {
         private Database database;
 
-        //[SetUp]
-        //public void Setup()
-        //{   
-        //}
-
         [Test]
         public void DatabaseConstructorSetsTheCorrectCountOfIntegers()
         {
