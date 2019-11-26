@@ -1,7 +1,8 @@
-﻿using System;
-
-namespace ValidPerson
+﻿namespace ValidPerson
 {
+    using System;
+    using System.Linq;
+    
     public class Person
     {
         private string firstName;
@@ -25,7 +26,12 @@ namespace ValidPerson
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException($"{nameof(FirstName)} cannot be null or empty!");
+                    throw new ArgumentNullException("First name cannot be null or empty!");
+                }
+
+                if (!value.All(char.IsLetter))
+                {
+                    throw new InvalidPersonNameException("First name contains invalid characters!");
                 }
 
                 this.firstName = value;
@@ -40,7 +46,12 @@ namespace ValidPerson
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException($"{nameof(this.LastName)} cannot be null or empty!");
+                    throw new ArgumentNullException("Last name cannot be null or empty!");
+                }
+
+                if (!value.All(char.IsLetter))
+                {
+                    throw new InvalidPersonNameException("Last name contains invalid characters!");
                 }
 
                 this.lastName = value;
@@ -53,9 +64,9 @@ namespace ValidPerson
 
             private set
             {
-                if (value<0||value>120)
+                if (value < 0 || value > 120)
                 {
-                    throw new ArgumentOutOfRangeException($"{nameof(this.Age)} must be between 0 and 120!");
+                    throw new ArgumentOutOfRangeException("Age must be between 0 and 120!");
                 }
 
                 this.age = value;

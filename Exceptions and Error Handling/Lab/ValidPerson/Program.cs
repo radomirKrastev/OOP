@@ -1,6 +1,7 @@
 ﻿namespace ValidPerson
 {
     using System;
+
     public class Program
     {
         public static void Main()
@@ -15,13 +16,17 @@
 
             try
             {
-                Person validPerson = new Person("asd", "asd", -1);
+                Person validPerson = new Person("Pen4o", "Kovachev", 41);
             }
-            catch(ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException e)
             {
                 Console.WriteLine(e.Message);
             }
             catch (ArgumentNullException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (InvalidPersonNameException e)
             {
                 Console.WriteLine(e.Message);
             }
