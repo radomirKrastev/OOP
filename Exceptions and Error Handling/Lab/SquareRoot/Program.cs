@@ -18,7 +18,7 @@
                 int squareRootNumber = (int)Math.Sqrt(number);
                 Console.WriteLine(squareRootNumber);
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 Console.WriteLine("Invalid number");                    
             }
