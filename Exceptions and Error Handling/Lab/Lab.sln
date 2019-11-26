@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fixing", "Fixing\Fixing.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fixing2", "Fixing2\Fixing2.csproj", "{F526FCA3-24A2-46AA-A23A-D348CC9315FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertToDouble", "ConvertToDouble\ConvertToDouble.csproj", "{4D018BAD-4811-4688-9D0A-67E50CE5E92A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F526FCA3-24A2-46AA-A23A-D348CC9315FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F526FCA3-24A2-46AA-A23A-D348CC9315FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F526FCA3-24A2-46AA-A23A-D348CC9315FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D018BAD-4811-4688-9D0A-67E50CE5E92A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D018BAD-4811-4688-9D0A-67E50CE5E92A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D018BAD-4811-4688-9D0A-67E50CE5E92A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D018BAD-4811-4688-9D0A-67E50CE5E92A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
