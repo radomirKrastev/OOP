@@ -81,6 +81,10 @@ namespace Service.Tests
             {
                 Assert.AreEqual(typeof(ArgumentException), e.InnerException.GetType());
             }
+            catch (ArgumentException e)
+            {
+                Assert.AreEqual(typeof(ArgumentException), e.InnerException.GetType());
+            }
         }
 
         [Test]
@@ -106,13 +110,20 @@ namespace Service.Tests
             {             
                 Assert.AreEqual(typeof(ArgumentException), e.InnerException.GetType());
             }
+            catch(ArgumentException e)
+            {
+                Assert.AreEqual(typeof(ArgumentException), e.InnerException.GetType());
+            }
         }
 
         [Test]
         [TestCase("LaptopPart", "processor", 1000, true)]
+        [TestCase("LaptopPart", "processor", 1000, false)]
         [TestCase("PCPart", "fan", 155.5, true)]
+        [TestCase("PCPart", "fan", 155.5, false)]
         [TestCase("PhonePart", "touchscreen", 357, true)]
-        public void RepairSetsIsBrokenProperyToFalse(
+        [TestCase("PhonePart", "touchscreen", 357, false)]
+        public void RepairSetsIsBrokenPropertyToFalse(
             string partTypeString,
             string partName,
             decimal partCost,
