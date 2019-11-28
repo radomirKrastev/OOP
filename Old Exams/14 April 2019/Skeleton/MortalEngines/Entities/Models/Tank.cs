@@ -1,4 +1,4 @@
-﻿namespace MortalEngines.Entities
+﻿namespace MortalEngines.Entities.Models
 {
     using System.Text;
     using Contracts;    

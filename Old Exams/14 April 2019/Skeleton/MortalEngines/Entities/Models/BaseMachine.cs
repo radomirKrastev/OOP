@@ -1,4 +1,4 @@
-﻿namespace MortalEngines.Entities
+﻿namespace MortalEngines.Entities.Models
 {
     using System;
     using System.Collections.Generic;
@@ -61,7 +61,7 @@
         {
             if (target == null)
             {
-                throw new NullReferenceException("Target cannot be null");
+                throw new NullReferenceException("Target cannot be null.");
             }          
 
             double attackDamage = this.AttackPoints - target.DefensePoints;
