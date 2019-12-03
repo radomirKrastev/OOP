@@ -1,6 +1,7 @@
 ﻿namespace PlayersAndMonsters.Models.BattleFields
 {
     using System;
+    using System.Linq;
     using Contracts;
     using PlayersAndMonsters.Models.Cards.Contracts;
     using PlayersAndMonsters.Models.Players.Contracts;
@@ -16,18 +17,29 @@
 
             if (attackPlayer.GetType().Name == "Beginner")
             {
-                IncreaseBegginerAttributes(attackPlayer);
+                this.IncreaseBegginerAttributes(attackPlayer);
             }
 
-            if(enemyPlayer.GetType().Name == "Beginner")
+            if (enemyPlayer.GetType().Name == "Beginner")
             {
-                IncreaseBegginerAttributes(enemyPlayer);
+                this.IncreaseBegginerAttributes(enemyPlayer);
             }
 
-            GetHealthBonusFromDeck(attackPlayer);
-            GetHealthBonusFromDeck(enemyPlayer);
+            this.GetHealthBonusFromDeck(attackPlayer);
+            this.GetHealthBonusFromDeck(enemyPlayer);
+            
+            while (!attackPlayer.IsDead && !enemyPlayer.IsDead)
+            {
+                int attackerDamage = attackPlayer.CardRepository.Cards.Select(x => x.DamagePoints).Sum();
+                int enemyDamage = enemyPlayer.CardRepository.Cards.Select(x => x.DamagePoints).Sum();
 
-            //Attack is not implemented yet
+                enemyPlayer.TakeDamage(attackerDamage);
+
+                if (!enemyPlayer.IsDead)
+                {
+                    attackPlayer.TakeDamage(enemyDamage);
+                }
+            }
         }
 
         private void IncreaseBegginerAttributes(IPlayer player)

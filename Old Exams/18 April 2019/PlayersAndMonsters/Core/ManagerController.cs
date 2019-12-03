@@ -1,17 +1,16 @@
 ﻿namespace PlayersAndMonsters.Core
 {
-    using System;
-
-    using Contracts;
+    using System.Text;
     using Common;
-    using PlayersAndMonsters.Models.Players.Contracts;
+    using Contracts;
     using PlayersAndMonsters.Core.Factories;
-    using PlayersAndMonsters.Core.Factories.Contracts;
-    using PlayersAndMonsters.Repositories.Contracts;
-    using PlayersAndMonsters.Repositories;
-    using PlayersAndMonsters.Models.Cards.Contracts;
-    using PlayersAndMonsters.Models.BattleFields.Contracts;
+    using PlayersAndMonsters.Core.Factories.Contracts;    
     using PlayersAndMonsters.Models.BattleFields;
+    using PlayersAndMonsters.Models.BattleFields.Contracts;
+    using PlayersAndMonsters.Models.Cards.Contracts;
+    using PlayersAndMonsters.Models.Players.Contracts;
+    using PlayersAndMonsters.Repositories;
+    using PlayersAndMonsters.Repositories.Contracts;       
 
     public class ManagerController : IManagerController
     {
@@ -53,7 +52,7 @@
 
             player.CardRepository.Add(card);
 
-            return string.Format(Common.ConstantMessages.SuccessfullyAddedPlayerWithCards, cardName, username);
+            return string.Format(ConstantMessages.SuccessfullyAddedPlayerWithCards, cardName, username);
         }
 
         public string Fight(string attackUser, string enemyUser)
@@ -62,11 +61,38 @@
             IPlayer enemy = this.playerRepository.Find(enemyUser);
 
             this.battlefield.Fight(attacker, enemy);
+
+            return string.Format(ConstantMessages.FightInfo, attacker.Health, enemy.Health);
         }
 
         public string Report()
         {
-            throw new NotImplementedException();
+            StringBuilder output = new StringBuilder();
+                       
+            foreach (IPlayer player in this.playerRepository.Players)
+            {
+                output.AppendLine(string
+                    .Format(
+                    ConstantMessages.PlayerReportInfo,
+                    player.Username,
+                    player.Health,
+                    player.CardRepository.Count));
+
+                foreach (ICard card in player.CardRepository.Cards)
+                {
+                    output.AppendLine(string
+                    .Format(
+                        ConstantMessages.CardReportInfo,
+                    card.Name,
+                    card.DamagePoints));
+                }
+
+                output.AppendLine(string.Format(ConstantMessages.DefaultReportSeparator));
+            }
+
+            string report = output.ToString().TrimEnd();
+            
+            return report;
         }
     }
 }

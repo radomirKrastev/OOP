@@ -56,13 +56,15 @@
             {
                 throw new ArgumentException("Damage points cannot be less than zero.");
             }
-
-            this.Health -= damagePoints;
-
-            if (this.Health < 0)
+            
+            if (this.Health - damagePoints < 0)
             {
                 this.Health = 0;
             }
+            else
+            {
+                this.Health -= damagePoints;
+            }            
         }
     }
 }
