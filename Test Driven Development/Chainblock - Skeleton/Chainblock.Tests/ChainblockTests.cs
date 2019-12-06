@@ -19,7 +19,7 @@
             this.transaction = new Mock<ITransaction>();
             this.transaction.SetupGet(x => x.Id).Returns(123);
             this.transaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
-            this.chainblock = new Chainblock();
+            this.chainblock = new ChainBlock();
         }
 
         [Test]
@@ -125,14 +125,17 @@
             Mock<ITransaction> secondTransaction = new Mock<ITransaction>();
             secondTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
             secondTransaction.SetupGet(x => x.Amount).Returns(550);
+            secondTransaction.SetupGet(x => x.Id).Returns(550);
 
             Mock<ITransaction> thirdTransaction = new Mock<ITransaction>();
             thirdTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
             thirdTransaction.SetupGet(x => x.Amount).Returns(350);
+            thirdTransaction.SetupGet(x => x.Id).Returns(350);
 
             Mock<ITransaction> fourthTransaction = new Mock<ITransaction>();
             fourthTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Successfull);
             fourthTransaction.SetupGet(x => x.Amount).Returns(550);
+            fourthTransaction.SetupGet(x => x.Id).Returns(15);
 
             IEnumerable<ITransaction> expectedCollection = new List<ITransaction> 
             { 
@@ -164,16 +167,19 @@
             Mock<ITransaction> secondTransaction = new Mock<ITransaction>();
             secondTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
             secondTransaction.SetupGet(x => x.Amount).Returns(550);
+            secondTransaction.SetupGet(x => x.Id).Returns(123456);
             secondTransaction.SetupGet(x => x.From).Returns("Tonkata");
 
             Mock<ITransaction> thirdTransaction = new Mock<ITransaction>();
             thirdTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
             thirdTransaction.SetupGet(x => x.Amount).Returns(350);
+            thirdTransaction.SetupGet(x => x.Id).Returns(7458);
             thirdTransaction.SetupGet(x => x.From).Returns("Jamal");
 
             Mock<ITransaction> fourthTransaction = new Mock<ITransaction>();
             fourthTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
             fourthTransaction.SetupGet(x => x.Amount).Returns(275);
+            fourthTransaction.SetupGet(x => x.Id).Returns(7823);
             fourthTransaction.SetupGet(x => x.From).Returns("Jamal");
 
             IEnumerable<string> expectedCollection = new List<string> { "Tonkata", "Maikal", "Jamal", "Jamal" };
@@ -202,15 +208,18 @@
             secondTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
             secondTransaction.SetupGet(x => x.Amount).Returns(550);
             secondTransaction.SetupGet(x => x.To).Returns("Tonkata");
+            secondTransaction.SetupGet(x => x.Id).Returns(888);
 
             Mock<ITransaction> thirdTransaction = new Mock<ITransaction>();
             thirdTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
             thirdTransaction.SetupGet(x => x.Amount).Returns(350);
+            thirdTransaction.SetupGet(x => x.Id).Returns(777);
             thirdTransaction.SetupGet(x => x.To).Returns("Jamal");
 
             Mock<ITransaction> fourthTransaction = new Mock<ITransaction>();
             fourthTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
             fourthTransaction.SetupGet(x => x.Amount).Returns(275);
+            fourthTransaction.SetupGet(x => x.Id).Returns(789);
             fourthTransaction.SetupGet(x => x.To).Returns("Jamal");
 
             IEnumerable<string> expectedCollection = new List<string> { "Tonkata", "Maikal", "Jamal", "Jamal" };
@@ -264,16 +273,18 @@
 
             Mock<ITransaction> thirdTransaction = new Mock<ITransaction>();
             thirdTransaction.SetupGet(x => x.Amount).Returns(250);
+            thirdTransaction.SetupGet(x => x.Id).Returns(250);
             thirdTransaction.SetupGet(x => x.From).Returns("Jamal");
 
             Mock<ITransaction> fourthTransaction = new Mock<ITransaction>();
             fourthTransaction.SetupGet(x => x.Amount).Returns(275);
+            fourthTransaction.SetupGet(x => x.Id).Returns(275);
             fourthTransaction.SetupGet(x => x.From).Returns("Jamal");
 
             IEnumerable<ITransaction> expectedCollection = new List<ITransaction> 
             { 
-                thirdTransaction.Object,
                 fourthTransaction.Object,
+                thirdTransaction.Object                
             };
 
             this.chainblock.Add(this.transaction.Object);
@@ -333,10 +344,12 @@
 
             Mock<ITransaction> secondTransaction = new Mock<ITransaction>();
             secondTransaction.SetupGet(x => x.Amount).Returns(500);
+            secondTransaction.SetupGet(x => x.Id).Returns(888);
             secondTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
 
             Mock<ITransaction> fourthTransaction = new Mock<ITransaction>();
             fourthTransaction.SetupGet(x => x.Amount).Returns(550);
+            fourthTransaction.SetupGet(x => x.Id).Returns(777);
             fourthTransaction.SetupGet(x => x.Status).Returns(TransactionStatus.Unauthorized);
 
             IEnumerable<ITransaction> expectedCollection = new List<ITransaction>();
@@ -362,10 +375,12 @@
 
             Mock<ITransaction> secondTransaction = new Mock<ITransaction>();
             secondTransaction.SetupGet(x => x.Amount).Returns(500);
+            secondTransaction.SetupGet(x => x.Id).Returns(55555);
             secondTransaction.SetupGet(x => x.From).Returns("Mane");
 
             Mock<ITransaction> fourthTransaction = new Mock<ITransaction>();
             fourthTransaction.SetupGet(x => x.Amount).Returns(550);
+            fourthTransaction.SetupGet(x => x.Id).Returns(550);
             fourthTransaction.SetupGet(x => x.From).Returns("Mane");
 
             IEnumerable<ITransaction> expectedCollection = new List<ITransaction> { fourthTransaction.Object, this.transaction.Object };
@@ -424,9 +439,11 @@
 
             Mock<ITransaction> secondTransaction = new Mock<ITransaction>();
             secondTransaction.SetupGet(x => x.Amount).Returns(5550);
+            secondTransaction.SetupGet(x => x.Id).Returns(5421);
 
             Mock<ITransaction> fourthTransaction = new Mock<ITransaction>();
             fourthTransaction.SetupGet(x => x.Amount).Returns(550);
+            fourthTransaction.SetupGet(x => x.Id).Returns(12341);
 
             IEnumerable<ITransaction> expectedCollection = new List<ITransaction>();
 
@@ -439,7 +456,7 @@
             this.chainblock.Add(fourthTransaction.Object);
             this.chainblock.Add(secondTransaction.Object);
 
-            Assert.AreEqual(expectedCollection, this.chainblock.GetAllInAmountRange(maximumAmount, maximumAmount));
+            Assert.AreEqual(expectedCollection, this.chainblock.GetAllInAmountRange(minimumAmount, maximumAmount));
         }
     }
 }
