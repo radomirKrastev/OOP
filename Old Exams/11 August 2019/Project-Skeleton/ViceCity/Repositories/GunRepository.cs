@@ -14,7 +14,7 @@
             this.models = new List<IGun>();
         }
 
-        public IReadOnlyCollection<IGun> Models => this.models;
+        public IReadOnlyCollection<IGun> Models => this.models.AsReadOnly();
 
         public void Add(IGun model)
         {

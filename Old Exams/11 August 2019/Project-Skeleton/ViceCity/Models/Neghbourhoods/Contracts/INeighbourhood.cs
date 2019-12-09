@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ViceCity.Models.Neghbourhoods.Contracts
 {
-    public interface INeighbourhood
+    public interface Neighbourhood
     {
         void Action(IPlayer mainPlayer, ICollection<IPlayer> civilPlayers);
     }

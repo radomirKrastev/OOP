@@ -1,4 +1,6 @@
-﻿namespace ViceCity.Models.Guns
+﻿using System.Collections.Generic;
+
+namespace ViceCity.Models.Guns
 {
     public class Pistol : Gun
     {
@@ -16,19 +18,20 @@
         {
             if (this.BulletsPerBarrel == 0)
             {
-                if (this.TotalBullets >= BarrelCapacity - this.BulletsPerBarrel)
+                if (this.Loads >= BarrelCapacity - this.BulletsPerBarrel)
                 {
-                    this.BulletsPerBarrel += BarrelCapacity - this.BulletsPerBarrel;
-                    this.TotalBullets -= BarrelCapacity - this.BulletsPerBarrel;
+                    this.Loads -= BarrelCapacity - this.BulletsPerBarrel;
+                    this.BulletsPerBarrel += BarrelCapacity - this.BulletsPerBarrel;                    
                 }
                 else
                 {
-                    this.BulletsPerBarrel += this.TotalBullets;
-                    this.TotalBullets = 0;
+                    this.BulletsPerBarrel += this.Loads;
+                    this.Loads = 0;
                 }
             }
 
             this.BulletsPerBarrel -= BulletsShooting;
+            this.TotalBullets = this.Loads + this.BulletsPerBarrel;
             return BulletsShooting;
         }
     }

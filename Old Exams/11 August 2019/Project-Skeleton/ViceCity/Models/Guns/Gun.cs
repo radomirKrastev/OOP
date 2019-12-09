@@ -14,6 +14,7 @@
             this.Name = name;
             this.BulletsPerBarrel = bulletsPerBarrel;
             this.TotalBullets = totalBullets;
+            this.Loads = this.TotalBullets - this.bulletsPerBarrel;
         }
 
         public string Name
@@ -60,8 +61,10 @@
                 this.totalBullets = value;
             }
         }
+        
+        protected int Loads { get; set; }
 
-        public bool CanFire => this.totalBullets + this.BulletsPerBarrel > 0;
+        public bool CanFire => this.totalBullets > 0;
 
         public abstract int Fire();
     }
