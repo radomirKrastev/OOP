@@ -1,9 +1,9 @@
 ﻿namespace ViceCity.Core
 {
-    using Contracts;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Contracts;    
     using ViceCity.Models.Guns;
     using ViceCity.Models.Guns.Contracts;
     using ViceCity.Models.Neghbourhoods;
@@ -16,7 +16,7 @@
         private IPlayer mainPlayer;
         private List<IPlayer> players;
         private Queue<IGun> guns;
-        private Neighbourhood neighbourhood;
+        private INeighbourhood neighbourhood;
 
         public Controller()
         {
@@ -83,7 +83,7 @@
             var actionHappened = false;
             var civils = 0;
 
-            if (this.mainPlayer.GunRepository.Models.Count > 0 && this.players.Any(x => x.IsAlive))
+            if (this.mainPlayer.GunRepository.Models.Count > 0 || this.players.Any(x => x.GunRepository.Models.Count > 0))
             {
                 actionHappened = true;
                 civils = this.players.Count();
@@ -102,7 +102,6 @@
                     + $"Tommy has killed: {tommyKills} players!"
                     + Environment.NewLine
                     + $"Left Civil Players: {this.players.Count}!";
-
             }
             else
             {

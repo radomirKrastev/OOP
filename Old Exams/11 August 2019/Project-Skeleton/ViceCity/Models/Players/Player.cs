@@ -1,8 +1,7 @@
 ﻿namespace ViceCity.Models.Players
 {
-    using Contracts;
     using System;
-    using ViceCity.Models.Guns;
+    using Contracts;    
     using ViceCity.Models.Guns.Contracts;
     using ViceCity.Repositories;
     using ViceCity.Repositories.Contracts;

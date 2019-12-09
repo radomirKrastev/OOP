@@ -1,8 +1,8 @@
-﻿using ViceCity.Models.Guns.Contracts;
-using System.Collections.Generic;
-
-namespace ViceCity.Repositories.Contracts
+﻿namespace ViceCity.Repositories.Contracts
 {
+    using System.Collections.Generic;
+    using ViceCity.Models.Guns.Contracts;
+    
     public interface IRepository<T>
     {
         IReadOnlyCollection<T> Models { get; }

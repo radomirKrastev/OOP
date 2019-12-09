@@ -1,20 +1,27 @@
 ﻿namespace ViceCity.Models.Guns
 {
-    using Contracts;
     using System;
+    using Contracts;    
 
     public abstract class Gun : IGun
     {
         private string name;
         private int bulletsPerBarrel;
         private int totalBullets;
-        
+        private int barrelsCount;
+
         public Gun(string name, int bulletsPerBarrel, int totalBullets)
         {
             this.Name = name;
             this.BulletsPerBarrel = bulletsPerBarrel;
             this.TotalBullets = totalBullets;
-            this.Loads = this.TotalBullets - this.bulletsPerBarrel;
+            this.barrelsCount = this.TotalBullets / this.bulletsPerBarrel;
+            this.Barrels = new int[this.barrelsCount];
+
+            for (int i = 0; i < this.barrelsCount; i++)
+            {
+                this.Barrels[i] = this.bulletsPerBarrel;
+            }
         }
 
         public string Name
@@ -34,7 +41,7 @@
 
         public int BulletsPerBarrel
         {
-            get => bulletsPerBarrel;
+            get => this.bulletsPerBarrel;
 
             protected set
             {
@@ -46,10 +53,10 @@
                 this.bulletsPerBarrel = value;
             }
         }
-
+        
         public int TotalBullets
         {
-            get => totalBullets;
+            get => this.totalBullets;
 
             protected set
             {
@@ -61,10 +68,10 @@
                 this.totalBullets = value;
             }
         }
-        
-        protected int Loads { get; set; }
 
         public bool CanFire => this.totalBullets > 0;
+
+        protected int[] Barrels { get; set; }
 
         public abstract int Fire();
     }

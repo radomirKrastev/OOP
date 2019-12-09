@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace ViceCity.Models.Guns
+﻿namespace ViceCity.Models.Guns
 {
+    using System.Linq;
+
     public class Pistol : Gun
     {
         private const int InitialBulletsPerBarrel = 10;
         private const int InitialTotalBullets = 100;
-        private const int BarrelCapacity = InitialBulletsPerBarrel;
         private const int BulletsShooting = 1;
 
         public Pistol(string name)
@@ -16,22 +15,18 @@ namespace ViceCity.Models.Guns
 
         public override int Fire()
         {
-            if (this.BulletsPerBarrel == 0)
+            this.TotalBullets = this.Barrels.Sum();
+            
+            for (int i = 0; i < this.Barrels.Length; i++)
             {
-                if (this.Loads >= BarrelCapacity - this.BulletsPerBarrel)
+                if (this.Barrels[i] > 0)
                 {
-                    this.Loads -= BarrelCapacity - this.BulletsPerBarrel;
-                    this.BulletsPerBarrel += BarrelCapacity - this.BulletsPerBarrel;                    
-                }
-                else
-                {
-                    this.BulletsPerBarrel += this.Loads;
-                    this.Loads = 0;
+                    this.Barrels[i] -= BulletsShooting;
+                    break;
                 }
             }
 
-            this.BulletsPerBarrel -= BulletsShooting;
-            this.TotalBullets = this.Loads + this.BulletsPerBarrel;
+            this.TotalBullets = this.Barrels.Sum();
             return BulletsShooting;
         }
     }

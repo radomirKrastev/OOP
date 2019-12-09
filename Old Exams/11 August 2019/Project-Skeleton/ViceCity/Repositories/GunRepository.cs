@@ -18,7 +18,7 @@
 
         public void Add(IGun model)
         {
-            if(this.Models.Any(x=>x.Name == model.Name))
+            if (this.Models.Any(x => x.Name == model.Name))
             {
                 return;
             }
