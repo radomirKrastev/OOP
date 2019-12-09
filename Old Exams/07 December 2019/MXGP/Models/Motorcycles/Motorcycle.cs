@@ -1,7 +1,7 @@
 ﻿namespace MXGP.Models.Motorcycles
 {
-    using Contracts;
     using System;
+    using Contracts;    
     using Utilities.Messages;
 
     public abstract class Motorcycle : IMotorcycle

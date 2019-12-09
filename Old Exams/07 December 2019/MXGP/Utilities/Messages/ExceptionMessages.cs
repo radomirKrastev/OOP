@@ -20,7 +20,7 @@
             
         public const string RiderInvalid = "Racer cannot be null.";
            
-        public const string MotorcycleExists = "Motorcycle {0} is already create.";
+        public const string MotorcycleExists = "Motorcycle {0} is already created.";
        
         public const string MotorcycleInvalid = "Motorcycle cannot be null.";
      

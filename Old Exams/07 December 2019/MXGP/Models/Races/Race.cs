@@ -6,12 +6,12 @@
     using MXGP.Utilities.Messages;
     using Races.Contracts;
     using Riders.Contracts;
+
     public class Race : IRace
     {
         private string name;
         private int laps;
         private List<IRider> riders;
-
 
         public Race(string name, int laps)
         {
@@ -26,7 +26,7 @@
             
             private set
             {
-                if(string.IsNullOrEmpty(value) || value.Length < 5)
+                if (string.IsNullOrEmpty(value) || value.Length < 5)
                 {
                     throw new ArgumentException(string.Format(ExceptionMessages.InvalidModel, value, 5));
                 }
@@ -54,7 +54,7 @@
 
         public void AddRider(IRider rider)
         {
-            if(rider == null)
+            if (rider == null)
             {
                 throw new ArgumentNullException("Rider cannot be null.");
             }

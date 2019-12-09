@@ -5,10 +5,10 @@
 
     public class PowerMotorcycle : Motorcycle
     {
-        private int horsePower;
         private const double ModelCubicCentimeters = 450;
         private const int MinimumHorsePower = 70;
         private const int MaximumHorsePower = 150;
+        private int horsePower;
 
         public PowerMotorcycle(string model, int horsePower) 
             : base(model, horsePower, ModelCubicCentimeters)

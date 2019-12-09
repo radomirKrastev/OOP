@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MXGP.Core.Contracts
+﻿namespace MXGP.Core.Contracts
 {
-    class IEngine
+    public interface IEngine
     {
+        void Run();
     }
 }
