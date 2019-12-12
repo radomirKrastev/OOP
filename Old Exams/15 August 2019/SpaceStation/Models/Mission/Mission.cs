@@ -12,12 +12,7 @@
         {
             foreach (var astronaut in astronauts)
             {
-                //if (!planet.Items.Any())
-                //{
-                //    break;
-                //}
-
-                while (astronaut.CanBreath)
+                while (astronaut.CanBreath && planet.Items.Count > 0)
                 {
                     var planetMaterial = planet.Items.First();
                     astronaut.Bag.Items.Add(planetMaterial);

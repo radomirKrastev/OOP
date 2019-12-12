@@ -4,7 +4,7 @@
     {
         private const double InitialOxygen = 50;
 
-        public Geodesist(string name, double oxygen) 
+        public Geodesist(string name) 
             : base(name, InitialOxygen)
         {
         }

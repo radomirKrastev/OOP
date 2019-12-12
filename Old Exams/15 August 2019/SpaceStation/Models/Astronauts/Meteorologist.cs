@@ -4,7 +4,7 @@
     {
         private const double InitialOxygen = 90;
 
-        public Meteorologist(string name, double oxygen) 
+        public Meteorologist(string name) 
             : base(name, InitialOxygen)
         {
         }
