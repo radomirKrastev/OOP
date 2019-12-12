@@ -30,34 +30,34 @@
 
         public string AddAstronaut(string type, string astronautName)
         {
-            //var astronautType = Assembly.GetExecutingAssembly().GetTypes().FirstOrDefault(x => x.Name == type);
+            var astronautType = Assembly.GetExecutingAssembly().GetTypes().FirstOrDefault(x => x.Name == type);
 
-            //if (astronautType == null)
-            //{
-            //    throw new InvalidOperationException(string.Format(ExceptionMessages.InvalidAstronautType));
-            //}
-
-            //var astronautModel = (IAstronaut)Activator.CreateInstance(astronautType, astronautName);
-            //this.astronauts.Add(astronautModel);
-            //return string.Format(OutputMessages.AstronautAdded, type, astronautName);
-
-            switch (type)
+            if (astronautType == null)
             {
-                case "Biologist":
-                    var bio = new Biologist(astronautName);
-                    this.astronauts.Add(bio);
-                    return string.Format(OutputMessages.AstronautAdded, type, astronautName);
-                case "Geodesist":
-                    var geo = new Geodesist(astronautName);
-                    this.astronauts.Add(geo);
-                    return string.Format(OutputMessages.AstronautAdded, type, astronautName);
-                case "Meteorologist":
-                    var astronautModel = new Meteorologist(astronautName);
-                    this.astronauts.Add(astronautModel);
-                    return string.Format(OutputMessages.AstronautAdded, type, astronautName);
-                default:
-                    throw new InvalidOperationException(string.Format(ExceptionMessages.InvalidAstronautType));
+                throw new InvalidOperationException(string.Format(ExceptionMessages.InvalidAstronautType));
             }
+
+            var astronautModel = (IAstronaut)Activator.CreateInstance(astronautType, astronautName);
+            this.astronauts.Add(astronautModel);
+            return string.Format(OutputMessages.AstronautAdded, type, astronautName);
+
+            ////switch (type)
+            ////{
+            ////    case "Biologist":
+            ////        var bio = new Biologist(astronautName);
+            ////        this.astronauts.Add(bio);
+            ////        return string.Format(OutputMessages.AstronautAdded, type, astronautName);
+            ////    case "Geodesist":
+            ////        var geo = new Geodesist(astronautName);
+            ////        this.astronauts.Add(geo);
+            ////        return string.Format(OutputMessages.AstronautAdded, type, astronautName);
+            ////    case "Meteorologist":
+            ////        var astronautModel = new Meteorologist(astronautName);
+            ////        this.astronauts.Add(astronautModel);
+            ////        return string.Format(OutputMessages.AstronautAdded, type, astronautName);
+            ////    default:
+            ////        throw new InvalidOperationException(string.Format(ExceptionMessages.InvalidAstronautType));
+            ////}
         }
 
         public string AddPlanet(string planetName, params string[] items)
@@ -66,7 +66,7 @@
 
             if (items.Any())
             {
-                foreach(var item in items)
+                foreach (var item in items)
                 {
                     newPlanet.Items.Add(item);
                 }

@@ -28,7 +28,7 @@
 
         public bool Remove(IPlanet model)
         {
-            if(this.models.Any(x=>x.Name == model.Name))
+            if (this.models.Any(x => x.Name == model.Name))
             {
                 this.models.Remove(model);
                 return true;

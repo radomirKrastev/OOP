@@ -1,11 +1,11 @@
-﻿using SpaceStation.Core.Contracts;
-using SpaceStation.IO;
-using SpaceStation.IO.Contracts;
-using System;
-using System.Collections.Generic;
-
-namespace SpaceStation.Core
+﻿namespace SpaceStation.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using SpaceStation.Core.Contracts;
+    using SpaceStation.IO;
+    using SpaceStation.IO.Contracts;
+
     public class Engine : IEngine
     {
         private IWriter writer;
@@ -23,11 +23,12 @@ namespace SpaceStation.Core
         {
             while (true)
             {
-                var input = reader.ReadLine().Split();
+                var input = this.reader.ReadLine().Split();
                 if (input[0] == "Exit")
                 {
                     Environment.Exit(0);
                 }
+
                 try
                 {
                     if (input[0] == "AddAstronaut")
@@ -61,14 +62,14 @@ namespace SpaceStation.Core
 
                         this.writer.WriteLine(this.controller.ExplorePlanet(name));
                     }
-                    else if(input[0] == "Report")
+                    else if (input[0] == "Report")
                     {
                         this.writer.WriteLine(this.controller.Report());
                     }
                 }
                 catch (Exception ex)
                 {
-                    writer.WriteLine(ex.Message);
+                    this.writer.WriteLine(ex.Message);
                 }
             }
         }

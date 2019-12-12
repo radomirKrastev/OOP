@@ -1,8 +1,8 @@
 ﻿namespace SpaceStation.Models.Astronauts
 {
-    using Contracts;
-    using SpaceStation.Models.Bags;
     using System;
+    using Contracts;
+    using SpaceStation.Models.Bags;    
     using Utilities.Messages;
 
     public abstract class Astronaut : IAstronaut
@@ -33,7 +33,6 @@
             }
         }
 
-
         public double Oxygen
         {
             get => this.oxygen;
@@ -48,6 +47,7 @@
                 this.oxygen = value;
             }
         }
+
         public bool CanBreath => this.Oxygen > 0;
 
         public IBag Bag => this.bag;
